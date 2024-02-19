@@ -3,10 +3,10 @@ from tkinter import Tk, BOTH, Canvas
 
 class Window:
     def __init__(self, width, height):
-        self.root = tk.Tk()
+        self.root = Tk()
         self.root.title("Solve the Maze")
 
-        self.canvas_w = Canvas()
+        self.canvas_w = Canvas(self.root, width = width, height = height)
         self.canvas_w.pack()
         self.window_run = False
 
@@ -24,6 +24,8 @@ class Window:
     def close(self):
         self.window_run = False
 
-def main(self):
+def main():
     win = Window(800, 600)
     win.wait_for_close()
+
+main()
