@@ -12,6 +12,10 @@ class Window:
 
         self.root.protocol("WM_DELETE_WINDOW", self.close)
 
+    def draw(self, Line, fill_color):
+        Line.draw(self.canvas_w, fill_color)
+    
+    
     def redraw(self):
         self.root.update_idletasks()
         self.root.update()
@@ -24,8 +28,35 @@ class Window:
     def close(self):
         self.window_run = False
 
+#Define a singular point 
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+#Defines Line
+class Line:
+    def __init__(self, point_1, point_2):
+        self.x1 = point_1.x
+        self.y1 = point_1.y
+        self.x2 = point_2.x
+        self.y2 = point_2.y
+
+
+    def draw(self, canvas, fill_color):
+        canvas.create_line(self.x1, self.y1, self.x2, self.y2, fill=fill_color, width=2)
+        canvas.pack()
+        
+#Currently used to test output
 def main():
     win = Window(800, 600)
+    p1 = Point(1,2)
+    p2 = Point(50,100)
+    p3 = Point(100,450)
+    new_line = Line(p1, p2)
+    new_line2 = Line(p2, p3)
+    win.draw(new_line, "yellow")
+    win.draw(new_line2, "blue")
     win.wait_for_close()
 
 main()
