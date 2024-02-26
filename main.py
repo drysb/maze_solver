@@ -1,15 +1,17 @@
 from visuals import Window, Point, Line
+from cell import Cell   
 
 #Currently used to test output
 def main():
     win = Window(800, 600)
-    p1 = Point(1,2)
-    p2 = Point(50,100)
-    p3 = Point(100,450)
-    new_line = Line(p1, p2)
-    new_line2 = Line(p2, p3)
-    win.draw_line(new_line, "yellow")
-    win.draw_line(new_line2, "blue")
+    cell_1 = Cell(win)
+    cell_2 = Cell(win)
+    cell_2.has_right_wall = False
+    cell_2.has_bottom_wall = False
+
+    cell_1.draw(100,300,200,350)
+    cell_2.draw(400,450,500,550)
+
     win.wait_for_close()
 
 main()
